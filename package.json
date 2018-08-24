@@ -4,7 +4,8 @@
     "description": "",
     "main": "app.js",
     "scripts": {
-        "test": "echo \"No tests yet\" && exit 1"
+        "test": "echo \"No tests yet\" && exit 1",
+        "start": "set DEBUG=app & node app.js"
     },
     "author": "",
     "license": "ISC",
