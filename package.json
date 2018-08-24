@@ -5,7 +5,8 @@
     "main": "app.js",
     "scripts": {
         "test": "echo \"No tests yet\" && exit 1",
-        "start": "set DEBUG=app & node app.js"
+        "start": "set DEBUG=app & node app.js",
+        "lint": "eslint app.js"
     },
     "author": "",
     "license": "ISC",
@@ -16,5 +17,10 @@
         "express": "^4.16.3",
         "jquery": "^3.3.1",
         "morgan": "^1.9.0"
+    },
+    "devDependencies": {
+        "eslint": "^5.4.0",
+        "eslint-config-airbnb-base": "^13.1.0",
+        "eslint-plugin-import": "^2.14.0"
     }
 }
