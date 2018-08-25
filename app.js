@@ -16,7 +16,6 @@ app.set('view engine', 'pug');
 app.set('views', './src/views');
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views/index.html'));
   res.render('index');
 });
 
