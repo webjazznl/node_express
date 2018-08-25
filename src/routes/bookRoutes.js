@@ -17,27 +17,28 @@ const books = [
   },
 ];
 
-bookRouter.route('/')
-  .get((req, res) => {
-    res.render('books',
-      {
-        title: 'MyLibrary',
-        nav: [{ link: '/books', title: 'Books' },
-          { link: '/authors', title: 'Authors' }],
-        books,
-      });
-  });
+function router(nav) {
+  bookRouter.route('/')
+    .get((req, res) => {
+      res.render('books',
+        {
+          title: 'MyLibrary',
+          nav,
+          books,
+        });
+    });
 
-bookRouter.route('/:id')
-  .get((req, res) => {
-    const { id } = req.params;
-    res.render('bookView',
-      {
-        title: 'MyLibrary',
-        nav: [{ link: '/books', title: 'Books' },
-          { link: '/authors', title: 'Authors' }],
-        book: books[id],
-      });
-  });
+  bookRouter.route('/:id')
+    .get((req, res) => {
+      const { id } = req.params;
+      res.render('bookView',
+        {
+          title: 'MyLibrary',
+          nav,
+          book: books[id],
+        });
+    });
+  return bookRouter;
+}
 
-module.exports = bookRouter;
+module.exports = router;

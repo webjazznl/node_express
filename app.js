@@ -3,7 +3,13 @@ const debug = require('debug')('app');
 const chalk = require('chalk');
 const morgan = require('morgan');
 const path = require('path');
-const bookRouter = require('./src/routes/bookRoutes');
+
+const nav = {
+  title: 'MyLibrary',
+  nav: [{ link: '/books', title: 'Books' },
+    { link: '/authors', title: 'Authors' }],
+};
+const bookRouter = require('./src/routes/bookRoutes')(nav);
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -20,12 +26,7 @@ app.set('views', './src/views');
 
 app.use('/books', bookRouter);
 app.get('/', (req, res) => {
-  res.render('index',
-    {
-      title: 'MyLibrary',
-      nav: [{ link: '/books', title: 'Books' },
-        { link: '/authors', title: 'Authors' }],
-    });
+  res.render('index', nav);
 });
 
 app.listen(port, () => {
