@@ -7,10 +7,31 @@ const path = require('path');
 const app = express();
 const port = process.env.PORT || 3000;
 
+const books = [
+  {
+    title: 'War and Peace',
+    genre: 'Historical Fiction',
+    author: 'Tolstoy',
+    read: false,
+  },
+  {
+    title: 'Neet dat benauwde',
+    genre: 'Comedy',
+    author: 'Wierdense Revue',
+    read: false,
+  },
+];
+
 const bookRouter = express.Router();
 bookRouter.route('/')
   .get((req, res) => {
-    res.send('hello books');
+    res.render('books',
+      {
+        title: 'MyLibrary',
+        nav: [{ link: '/books', title: 'Books' },
+          { link: '/authors', title: 'Authors' }],
+        books,
+      });
   });
 
 bookRouter.route('/single')
