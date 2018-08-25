@@ -5,7 +5,18 @@ const morgan = require('morgan');
 const path = require('path');
 
 const app = express();
+const port = process.env.PORT || 3000;
 
+const bookRouter = express.Router();
+bookRouter.route('/')
+  .get((req, res) => {
+    res.send('hello books');
+  });
+
+bookRouter.route('/single')
+  .get((req, res) => {
+    res.send('hello single book');
+  });
 app.use(morgan('tiny'));
 // these static file paths are checked by express for files in specified order...
 app.use(express.static(path.join(__dirname, 'public')));
@@ -15,6 +26,7 @@ app.use('/js', express.static(path.join(__dirname, '/node_modules/jquery/dist'))
 app.set('view engine', 'ejs');
 app.set('views', './src/views');
 
+app.use('/books', bookRouter);
 app.get('/', (req, res) => {
   res.render('index',
     {
@@ -24,7 +36,6 @@ app.get('/', (req, res) => {
     });
 });
 
-const port = process.env.PORT || 3000;
 app.listen(port, () => {
   debug(chalk.green(`Listening for requests on port ${port}`));
 });
