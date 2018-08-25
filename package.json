@@ -17,17 +17,20 @@
         "express": "^4.16.3",
         "jquery": "^3.3.1",
         "morgan": "^1.9.0",
-        "nodemon": "^1.18.3"
+        "nodemon": "^1.18.3",
+        "pug": "^2.0.3"
     },
     "devDependencies": {
         "eslint": "^5.4.0",
         "eslint-config-airbnb-base": "^13.1.0",
         "eslint-plugin-import": "^2.14.0"
     },
-    "nodemonConfig" : {
+    "nodemonConfig": {
         "restartable": "rs",
-        "ignore": ["node_modules/**/node_modules"],
-        "delay" : "1000",
+        "ignore": [
+            "node_modules/**/node_modules"
+        ],
+        "delay": "1000",
         "env": {
             "NODE_ENV": "development",
             "PORT": 4000
