@@ -3,41 +3,11 @@ const debug = require('debug')('app');
 const chalk = require('chalk');
 const morgan = require('morgan');
 const path = require('path');
+const bookRouter = require('./src/routes/bookRoutes');
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-const books = [
-  {
-    title: 'War and Peace',
-    genre: 'Historical Fiction',
-    author: 'Tolstoy',
-    read: false,
-  },
-  {
-    title: 'Neet dat benauwde',
-    genre: 'Comedy',
-    author: 'Wierdense Revue',
-    read: false,
-  },
-];
-
-const bookRouter = express.Router();
-bookRouter.route('/')
-  .get((req, res) => {
-    res.render('books',
-      {
-        title: 'MyLibrary',
-        nav: [{ link: '/books', title: 'Books' },
-          { link: '/authors', title: 'Authors' }],
-        books,
-      });
-  });
-
-bookRouter.route('/single')
-  .get((req, res) => {
-    res.send('hello single book');
-  });
 
 app.use(morgan('tiny'));
 // these static file paths are checked by express for files in specified order...
