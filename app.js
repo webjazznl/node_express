@@ -16,7 +16,12 @@ app.set('view engine', 'ejs');
 app.set('views', './src/views');
 
 app.get('/', (req, res) => {
-  res.render('index', { title: 'MyLibrary', list: ['a', 'b'] });
+  res.render('index',
+    {
+      title: 'MyLibrary',
+      nav: [{ link: '/books', title: 'Books' },
+        { link: '/authors', title: 'Authors' }],
+    });
 });
 
 const port = process.env.PORT || 3000;
