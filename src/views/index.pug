@@ -1,7 +1,10 @@
 html
     head
         title Library
-    body
-        h1 Library
+    body(class=["myclass"])
+        h1(id='myid')= title
         p
             h3 sub header
+        ul
+        each val in list
+            li= val

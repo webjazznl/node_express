@@ -16,7 +16,7 @@ app.set('view engine', 'pug');
 app.set('views', './src/views');
 
 app.get('/', (req, res) => {
-  res.render('index');
+  res.render('index', { title: 'MyLibrary', list: ['a', 'b'] });
 });
 
 const port = process.env.PORT || 3000;
