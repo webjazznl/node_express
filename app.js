@@ -17,6 +17,7 @@ bookRouter.route('/single')
   .get((req, res) => {
     res.send('hello single book');
   });
+
 app.use(morgan('tiny'));
 // these static file paths are checked by express for files in specified order...
 app.use(express.static(path.join(__dirname, 'public')));
